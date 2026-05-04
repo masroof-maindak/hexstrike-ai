@@ -1,0 +1,20 @@
+networks:
+  hexstrike-asg:
+    driver: bridge
+
+services:
+  kali:
+    build: .
+    container_name: hexstrike-kali
+    profiles: [kali]
+    stdin_open: true
+    tty: true
+    networks: [hexstrike-asg]
+
+  dvwa:
+    image: vulnerables/web-dvwa:latest
+    container_name: hexstrike-dvwa
+    networks: [hexstrike-asg]
+    ports:
+      - "127.0.0.1:4280:80"
+    profiles: [dvwa]
