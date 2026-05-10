@@ -16,5 +16,8 @@ services:
     container_name: hexstrike-dvwa
     networks: [hexstrike-asg]
     ports:
-      - "127.0.0.1:4280:80"
+      - "0.0.0.0:4280:80"
+    environment:
+      - SECURITY=high # low/medium/high/impossible
     profiles: [dvwa]
+
